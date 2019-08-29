@@ -16,10 +16,11 @@ using the package\!
 
 ## brickr
 
-The brickr package has two key uses:
+The brickr package has three key uses:
 
   - Converting image files in to 2D and 3D LEGO mosaics
   - Building 3D LEGO models from simple data frames
+  - Brick bar charts in **ggplot**
 
 ### Installation
 
@@ -58,7 +59,7 @@ penguin <- readxl::read_xlsx("brickr_StarterKit.xlsx", sheet = "Set_Penguin")
 
 penguin %>% 
   bricks_from_excel() %>% 
-  display_bricks(theta = 155, phi = 10)
+  build_bricks(theta = 155, phi = 10)
 
 rayshader::render_snapshot()
 ```

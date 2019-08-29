@@ -121,7 +121,7 @@ for(ll in seq_along(event_horizon_all)){
     filter(row_number() == 1) %>% 
     ungroup() %>% 
     bricks_from_coords() %>% 
-    display_bricks(background = "#111122")
+    build_bricks(background = "#111122")
   
   for(ii in 1:num_frames){
     if(frames_to_capture[ii] == ll){

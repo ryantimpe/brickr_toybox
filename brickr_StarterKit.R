@@ -16,7 +16,7 @@ example_penguin <- readxl::read_xlsx("brickr_starterkit.xlsx", sheet = "Set_Peng
 
 example_penguin %>% 
   bricks_from_excel(exclude_level = 1) %>% #If you don't want the base plate, exclude_level = 1
-  display_bricks(background = "#7EC0EE")
+  build_bricks(background = "#7EC0EE", brick_res = 'hd')
 
 
 #T.rex  
@@ -26,11 +26,16 @@ readxl::read_xlsx("brickr_starterkit.xlsx", sheet = "Set_Trex") %>%
 
 #Rocket 
 readxl::read_xlsx("brickr_starterkit.xlsx", sheet = "Set_Rocket") %>% 
-  bricks_from_excel() %>% 
-  display_bricks(background = "#7EC0EE")
+  brickr::bricks_from_excel() %>% 
+  brickr::build_bricks(background = "#7EC0EE", brick_res = 'sd')
 
 #House 
 readxl::read_xlsx("brickr_starterkit.xlsx", sheet = "Set_House") %>% 
   #Here, the example only draws every other brick layer, we want to repeat each one
   bricks_from_excel(repeat_levels = 2) %>% 
-  display_bricks(background = "#7EC0EE")
+  build_bricks(background = "#7EC0EE")
+
+#Fish 
+readxl::read_xlsx("brickr_starterkit.xlsx", sheet = "Set_Fish") %>% 
+  brickr::bricks_from_excel() %>% 
+  brickr::build_bricks(brick_res = 'sd')

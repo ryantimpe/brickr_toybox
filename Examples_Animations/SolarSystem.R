@@ -155,7 +155,7 @@ model_bricks <- solar_sys_bricks %>%
   bricks_from_coords() 
 
 model_bricks %>% 
-  display_bricks(background = "#111133")
+  build_bricks(background = "#111133")
 
 #Animate! ----
 
