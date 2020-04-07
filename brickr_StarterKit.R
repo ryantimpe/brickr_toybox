@@ -27,7 +27,18 @@ readxl::read_xlsx("brickr_starterkit.xlsx", sheet = "Set_Trex") %>%
 #Rocket 
 readxl::read_xlsx("brickr_starterkit.xlsx", sheet = "Set_Rocket") %>% 
   brickr::bricks_from_excel() %>% 
+  build_bricks_rgl()
   brickr::build_bricks(background = "#7EC0EE", brick_res = 'sd')
+
+test <- readxl::read_xlsx("brickr_starterkit.xlsx", sheet = "Set_RocketT") %>% 
+  brickr::bricks_from_excel()
+
+test %>% build_bricks()
+
+View(test$Img_bricks)
+
+options(error=recover)
+test %>%  brickr::build_bricks_rgl(background_color = "#00004b", rgl_lit=T)
 
 #House 
 readxl::read_xlsx("brickr_starterkit.xlsx", sheet = "Set_House") %>% 
