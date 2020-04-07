@@ -10,6 +10,8 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
+rgl::setupKnitr()
+
 library(brickr)
 library(jpeg)
 library(tidyverse)
@@ -66,21 +68,35 @@ The Excel file "brickr_StartKit.xlsx" provides templates, as well as a How-To ma
   - Lay out a model and the color key in Excel using one of the template or examples provided in the file.
   - Import the Excel sheet into R as a data frame using [Jenny Bryan](https://twitter.com/JennyBryan)'s [readxl](https://readxl.tidyverse.org/) package.
   - Convert this data frame into a brickr object using `bricks_from_excel()`.
-  
-```{r penguin, rgl=TRUE, dev='png', echo=TRUE, warning=FALSE, message=FALSE, fig.width=5, fig.height=5}
+
+```{r penguin_fake, echo=FALSE, fig.height=0.1, fig.width=5, message=FALSE, warning=FALSE, dev='png', rgl=TRUE}
+#FOR SOME REASON THE FIRST RGL IMAGE DOESNT SHOW UP
+# SO HERES A FAKE ONE
 penguin <- readxl::read_xlsx("brickr_StarterKit.xlsx", sheet = "Penguin")
 
 penguin %>% 
   bricks_from_excel() %>% 
   build_bricks()
 
-rgl::par3d(userMatrix = rgl::rotate3d(rgl::par3d("userMatrix"), 0.9*pi, 0, 0 ,1))
+#Rotate the default view for a better snapshot
+rgl::par3d(userMatrix = rgl::rotate3d(rgl::par3d("userMatrix"), 0.9*pi, 0, 0 ,1),
+           zoom = 0.7)
 ```
-```{r, echo=FALSE}
- rgl::rgl.clear()
+  
+```{r penguin, rgl=TRUE, dev='png', echo=TRUE, warning=FALSE, message=FALSE, fig.width=5, fig.height=5}
+penguin <- readxl::read_xlsx("brickr_StarterKit.xlsx", sheet = "Penguin")
+
+penguin %>% 
+  bricks_from_excel() %>% 
+  build_bricks(background_color = "#99e7ff")
+
+#Rotate the default view for a better snapshot
+rgl::par3d(userMatrix = rgl::rotate3d(rgl::par3d("userMatrix"), 0.9*pi, 0, 0 ,1),
+           zoom = 0.7)
 ```
 
-### Advanced models
+
+## Advanced models
 
 The penguin model is made completely of standard LEGO bricks placed at regularly heights. Once comfortable with building these simple models, you can build more advanced models with two additional features.
 
@@ -101,12 +117,11 @@ sandcastle_colors %>%
   ) %>% 
   build_bricks(background_color = "#fd5e53")
 
-rgl::par3d(userMatrix = rgl::rotate3d(rgl::par3d("userMatrix"), 0.1, 0, 0 ,1), 
+#Rotate the default view for a better snapshot
+rgl::par3d(userMatrix = rgl::rotate3d(rgl::par3d("userMatrix"), 0.1, 0, 0 ,1),
            zoom = 0.7)
 ```
-```{r, echo=FALSE}
- rgl::rgl.clear()
-```
+
 
 ## Contribute
 

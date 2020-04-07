@@ -75,19 +75,23 @@ rendering them as 3D models in R using brickr.
   - Convert this data frame into a brickr object using
     `bricks_from_excel()`.
 
-<!-- end list -->
+![](README_files/figure-gfm/penguin_fake-1.png)<!-- -->
 
 ``` r
 penguin <- readxl::read_xlsx("brickr_StarterKit.xlsx", sheet = "Penguin")
 
 penguin %>% 
   bricks_from_excel() %>% 
-  build_bricks()
+  build_bricks(background_color = "#99e7ff")
 
-rgl::par3d(userMatrix = rgl::rotate3d(rgl::par3d("userMatrix"), 0.9*pi, 0, 0 ,1))
+#Rotate the default view for a better snapshot
+rgl::par3d(userMatrix = rgl::rotate3d(rgl::par3d("userMatrix"), 0.9*pi, 0, 0 ,1),
+           zoom = 0.7)
 ```
 
-### Advanced models
+![](README_files/figure-gfm/penguin-1.png)<!-- -->
+
+## Advanced models
 
 The penguin model is made completely of standard LEGO bricks placed at
 regularly heights. Once comfortable with building these simple models,
@@ -120,9 +124,12 @@ sandcastle_colors %>%
   ) %>% 
   build_bricks(background_color = "#fd5e53")
 
-rgl::par3d(userMatrix = rgl::rotate3d(rgl::par3d("userMatrix"), 0.1, 0, 0 ,1), 
+#Rotate the default view for a better snapshot
+rgl::par3d(userMatrix = rgl::rotate3d(rgl::par3d("userMatrix"), 0.1, 0, 0 ,1),
            zoom = 0.7)
 ```
+
+![](README_files/figure-gfm/castle-1.png)<!-- -->
 
 ## Contribute
 
